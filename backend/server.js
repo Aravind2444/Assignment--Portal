@@ -11,10 +11,11 @@ app.use(cors());
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, path.join(__dirname, 'uploads'))
     },
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+        const studentName = req.body.studentName;
+        cb(null, studentName + path.extname(file.originalname))
     }
 });
 

@@ -44,6 +44,16 @@ h1 {
     background-color: #0056b3;
 }
 
+input[type="text"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
 input[type="file"] {
     display: none;
 }

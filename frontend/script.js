@@ -41,7 +41,9 @@ assignmentInput.addEventListener('change', () => {
 uploadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const studentName = document.getElementById('student-name').value;
     const formData = new FormData(uploadForm);
+    formData.set('studentName', studentName);
     
     try {
         const response = await fetch('http://localhost:3000/upload', {

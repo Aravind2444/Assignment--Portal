@@ -10,6 +10,7 @@
     <div class="upload-container">
         <h1>Upload Your Assignment</h1>
         <form id="upload-form" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+            <input type="text" id="student-name" name="studentName" placeholder="Enter your name" required>
             <input type="file" name="assignment" id="assignment" accept=".pdf" required>
             <label for="assignment" class="upload-label">Select a PDF file</label>
             <div id="preview-area" style="display: none;">
