@@ -25,6 +25,19 @@ app.post('/upload', upload.single('assignment'), (req, res) => {
     res.send('File uploaded successfully.');
 });
 
+const fs = require('fs');
+
+app.get('/assignments', (req, res) => {
+    const uploadsDir = path.join(__dirname, 'uploads');
+    fs.readdir(uploadsDir, (err, files) => {
+        if (err) {
+            console.error('Error reading uploads directory:', err);
+            return res.status(500).send('Unable to retrieve assignments.');
+        }
+        res.json(files);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
