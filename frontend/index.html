@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload Your Assignment</h1>
+        <form id="upload-form" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="assignment" id="assignment" accept=".pdf" required>
+            <label for="assignment" class="upload-label">Select a PDF file</label>
+            <div id="preview-area" style="display: none;">
+                <p id="file-name"></p>
+                <canvas id="pdf-preview"></canvas>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <p id="upload-status"></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
