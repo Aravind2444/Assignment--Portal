@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -23,6 +24,19 @@ const upload = multer({ storage: storage });
 
 app.post('/upload', upload.single('assignment'), (req, res) => {
     res.send('File uploaded successfully.');
+});
+
+const fs = require('fs');
+
+app.get('/assignments', (req, res) => {
+    const uploadsDir = path.join(__dirname, 'uploads');
+    fs.readdir(uploadsDir, (err, files) => {
+        if (err) {
+            console.error('Error reading uploads directory:', err);
+            return res.status(500).send('Unable to retrieve assignments.');
+        }
+        res.json(files);
+    });
 });
 
 app.listen(port, () => {
